@@ -23,14 +23,17 @@
   <!-- Add icon -->
   <link rel="icon" href="../../Photos/favicon.ico">
 
+  <!-- optimize view for mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 </head>
 
 <body>
   <!-- Navigation bar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img id="logo" src="../../Photos/Closed_Logo.svg" alt="logo" class = "logo animate">
+      <a class="navbar-brand" href="../../index.html">
+        <img id="logo" src="../../Photos/Closed_Logo.svg" alt="logo" class="logo animate">
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,26 +59,137 @@
     <hr>
   </nav>
 
-<!-- Start of blog post -->
+  <!-- Start of blog post -->
 
-<h1>This will be an article about building this blog</h1>
+  <!-- Intro -->
 
+  <div class="container top">
+    <div class="row justify-content-center align-items-center projectGroup">
+      <div class="col-auto">
+        <img src="../../Photos/Cluster_example.jpg" class="projectImage" alt="Face Filter Photo">
+      </div>
+      <div class="col-lg-6 projectText">
+        <h4>Instagram filter clone</h4>
+        <p><i>March 2022</i></p>
+        <p>
+          Developed multiple face filters as an introduction to Python & computer vision
+        </p>
+        <p>
+          <b>Technology:</b> Python, PIL, OpenCV
+        </p>
+        <a href="https://github.com/jacobrieber/face-filter">
+          <button type="button" class="btn btn-outline-secondary animate">View Repository</button>
+        </a>
+      </div>
+    </div>
+  </div>
 
+  <!-- Project Overview -->
 
+  <div class="container divider">
+    <div>
+      <hr class="sectionLine">
+      <h3 class="sectionText">Project overview</h3>
+      <hr class="sectionLine">
+    </div>
+  </div>
+
+  <div class="container-fluid projectOverview">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-lg-5">
+        <img src="../../Photos/faceFilterCollage1.jpg" alt="Face Filter Images" class="center">
+      </div>
+      <div class="col-lg-4 projectOverviewText">
+        <p> You know what? I’ll say it — face filters are cool, and they’re not going anywhere. Growing up, the snapchat
+          <a href="https://knowyourmeme.com/memes/dog-filter">dog with tongue filter</a>
+          took my middle school and high school by storm, and to this day, a good filter is the easiest way to make any millennial laugh, and I love that. <br /> <br />
+
+          Once I learned about OpenCV and how quickly it could implement computer vision and facial recognition into a project, I knew I had to take part in the peak culture that is the face filter. For this project, I developed multiple face filters
+          that focused on building a mask on top of the user’s face, utilizing their own features as the focal point. This involves duplicating the user's eyes and portions of their face to build out patterns around the image. <br /> <br />
+
+          Although I do love a good dog filter, I think it’s much cooler to explore and show off the natural geometric patterns and features we already have. Below are some quick instructions on how to recreate this project for yourself.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- How to recreat this project -->
+
+  <div class="container">
+    <div>
+      <hr class="sectionLine">
+      <h3 class="sectionText">How to recreate this project</h3>
+      <hr class="sectionLine">
+    </div>
+  </div>
+
+  <div class="container-fluid projectOverview">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-lg-5">
+        <dl class="">
+          <dt>1. Import Image & ImageTools from PIL / Pillow</dt>
+          <dd>PIL (Python Imaging Library) is a free library for the Python programming language that supports image processing and camera functionalities. This library is the true bread and butter of this project, as we’ll be using this program to
+            take a photo through the computer’s webcam, detect faces in that photo, and finally edit the photo to our heart’s content</dd>
+          <dd class="exampleCode">from PIL import Image #Download Pillow <br />
+            import ImageTools #Download ImageToolsMadeEasy</dd>
+          <dt>2. Take a photo using ImageTools</dt>
+          <dd class="exampleCode">#Take photo of user <br />
+            camera = ImageTools.Camera() <br />
+            img = camera.take_photo()</dd>
+          <dt>3. Utilize ImageTools.get_faces() function to identify faces in the captured image</dt>
+          <dd>For the face detection function to work, you must supply a file path to a haarcascade file. You can obtain the relevant file from <a href="https://github.com/opencv/opencv/tree/master/data/haarcascades">here.</a></dd>
+          <dd>This function returns a list of lists. The outer list represents the number of faces seen, and the inner list gives the coordinates of the individual face in each image. The provided coordinates outline the face as follows: <br />
+            [X-coordinate of the top left corner of the face, Y-coordinate of the top left corner of the face, width of the face, height of the face]</dd>
+          <dd class="exampleCode">#ID face of user photo <br />
+            faces = ImageTools.get_faces(img, "haarcascade_frontalface_default.xml")</dd>
+          <dt>4. Crop a section of the original image using the provided coordinates and the .crop() function. Alter the cropping as desired and save this as a seperate image.</dt>
+          <dd class="exampleCode">for face in faces: <br />
+            x, y, w, h = face <br />
+            face_only = img.crop((x+0.1*w, y+0.2*h, x+0.9*w, y+0.5*h))</dd>
+          <dt>5. Use the .paste() function to overlay the new, cropped image on top of the original image in whatever fashion you choose</dt>
+          <dd class="exampleCode">
+            xMidRight = (x+ 0.5*w) + 0.35*w <br />
+            xMidLeft = (x+ 0.5*w) - 1.15*w <br />
+            xOutRight = (x+ 0.5*w) + 0.15*w <br />
+            xOutLeft = (x+ 0.5*w) - 0.95*w <br />
+            yMiddle = y + h* 0.2 <br />
+            yTop = y <br />
+            yBottom = y + h*0.4 <br />
+            <br />
+
+            img.paste(face_only, (xOutRight.astype(int), yBottom.astype(int)))<br />
+            img.paste(face_only, (xOutLeft.astype(int), yBottom.astype(int)))<br />
+            <br />
+            img.paste(face_only, (xMidRight.astype(int), yMiddle.astype(int)))<br />
+            img.paste(face_only, (xMidLeft.astype(int), yMiddle.astype(int)))<br />
+            <br />
+
+            img.paste(face_only, (xOutRight.astype(int), yTop.astype(int)))<br />
+            img.paste(face_only, (xOutLeft.astype(int), yTop.astype(int)))
+          </dd>
+        </dl>
+      </div>
+      <div class="col-lg-4">
+        <img src="../../Photos/The Scream.jpg" alt="Face filter screaming example" class="articleImage center">
+        <img src="../../Photos/Cluster_example2.jpg" alt="Face filter with many eyes example" class="articleImage center">
+        <img src="../../Photos/Gemini_example.jpg" alt="Face filter with multiple copies of face" class="articleImage center">
+      </div>
+    </div>
+  </div>
 
 
   <!-- Footer -->
-<div class="container-fluid footer">
-  <div class="row justify-content-left align-items-center">
-    <div class="col-auto">
-        <p>© Copyright 2022 Jacob Rieber</p>
+  <div class="container-fluid footer">
+    <div class="row justify-content-left align-items-center">
+      <div class="col-auto">
+        <p>© 2022 Jacob Rieber</p>
+      </div>
+
     </div>
 
-  </div>
-
-<!-- Set-up JQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="../../index.js" charset="utf-8"></script>
+    <!-- Set-up JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../../index.js" charset="utf-8"></script>
 </body>
 
 </html>

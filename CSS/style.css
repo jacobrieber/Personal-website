@@ -23,6 +23,8 @@ body {
   border: 1px solid rgba(135, 135, 135, 0.5);
   width: 80%;
   margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .sectionText {
@@ -57,4 +59,62 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
   box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.postImage {
+  height: auto;
+  width: 400px;
+  border-style: solid;
+  border-color: #59788D;
+  border-width: 2px;
+  margin: 70px 5px 5px 5px;
+}
+
+.postProjectText {
+  height: auto;
+  width: 70%;
+}
+
+.center {
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.top {
+  margin-top: 80px;
+}
+
+.filterClonep1{
+  height: 350px;
+  width: auto;
+  display: block;
+}
+
+.projectOverview {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.projectOverviewText {
+  padding: 15px;
+  margin: 5px 25px 5px 25px;
+}
+
+.exampleCode {
+  color:#A9A9A9;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.articleImage {
+  width:375px;
+  height: auto;
+  margin-top: 75px;
+  margin-bottom: 75px;
 }
