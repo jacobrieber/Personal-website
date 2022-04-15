@@ -2,6 +2,28 @@ body {
   font-family: 'Roboto Slab', serif;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -50px;
+}
+
+.footer, .push {
+  height: 50px;
+}
+
+.footer {
+  background-color: #F8F9FA;
+  color: #707071;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.25);
+}
+
 .profilePicture {
   width: 190px;
   height: auto;
@@ -15,7 +37,7 @@ body {
 
 .navbar {
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
-  background-scolor: #E5E5E5;
+  background-color: #E5E5E5;
 }
 
 /* Section header edits */
@@ -53,13 +75,7 @@ body {
   margin: 5px;
 }
 
-.footer {
-  background-color: #F8F9FA;
-  color: #707071;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.25);
-}
+
 
 .postImage {
   height: auto;
@@ -121,4 +137,19 @@ body {
 
 .centralImage {
   width: 80%;
+}
+
+.centralMedImage {
+  width: 60%;
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
+.thoughtImage {
+  height: auto;
+  width: 225px;
+  border-style: solid;
+  border-color: #59788D;
+  border-width: 2px;
+  margin: 5px;
 }
